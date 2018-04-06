@@ -1,0 +1,115 @@
+{
+	"variables": [],
+	"info": {
+		"name": "B2BRetailer",
+		"_postman_id": "40863de3-2765-2a07-d8db-ac3cfa4bbf75",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:32795/api/products",
+			"request": {
+				"url": "http://localhost:32795/api/products",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:32795/api/products/1",
+			"request": {
+				"url": "http://localhost:32795/api/products/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST http://localhost:32795/api/products",
+			"request": {
+				"url": "http://localhost:32795/api/products",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Wrench\",\n    \"price\": 100,\n    \"itemsInStock\": 5\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT http://localhost:32795/api/products/1",
+			"request": {
+				"url": "http://localhost:32795/api/products/3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"name\": \"Drill\",\n    \"price\": 500,\n    \"itemsInStock\": 5\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE http://localhost:32795/api/products/1",
+			"request": {
+				"url": "http://localhost:32795/api/products/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:32794/api/orders",
+			"request": {
+				"url": "http://localhost:32794/api/orders",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST http://localhost:32794/api/orders",
+			"request": {
+				"url": "http://localhost:32794/api/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 3,\n    \"quantity\": 1\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

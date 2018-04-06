@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi", "ProductApi\ProductApi.csproj", "{95046DA7-3EC7-427A-9E13-3BF79924A98B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderApi", "OrderApi\OrderApi.csproj", "{60EAC311-B1A2-411E-AFBB-285C051B3FE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95046DA7-3EC7-427A-9E13-3BF79924A98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95046DA7-3EC7-427A-9E13-3BF79924A98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95046DA7-3EC7-427A-9E13-3BF79924A98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95046DA7-3EC7-427A-9E13-3BF79924A98B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EAC311-B1A2-411E-AFBB-285C051B3FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EAC311-B1A2-411E-AFBB-285C051B3FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EAC311-B1A2-411E-AFBB-285C051B3FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EAC311-B1A2-411E-AFBB-285C051B3FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
