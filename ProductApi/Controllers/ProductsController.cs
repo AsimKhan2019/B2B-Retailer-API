@@ -70,6 +70,9 @@ namespace ProductApi.Controllers
             modifiedProduct.Name = product.Name;
             modifiedProduct.Price = product.Price;
             modifiedProduct.ItemsInStock = product.ItemsInStock;
+            modifiedProduct.Description = product.Description;
+            modifiedProduct.Category = product.Category;
+
 
             repository.Edit(modifiedProduct);
             return new NoContentResult();

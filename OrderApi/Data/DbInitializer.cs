@@ -21,7 +21,7 @@ namespace OrderApi.Data
 
             List<Order> orders = new List<Order>
             {
-                new Order { Date = DateTime.Today, ProductId = 1, Quantity = 2 }
+                new Order { CustomerId = 1, Date = DateTime.Today, ProductId = 1, Quantity = 2, Status = "Requested" }
             };
 
             context.Orders.AddRange(orders);

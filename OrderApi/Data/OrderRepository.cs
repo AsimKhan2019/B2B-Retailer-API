@@ -15,6 +15,11 @@ namespace OrderApi.Data
             db = context;
         }
 
+        public IEnumerable<Order> GetAllFromCustomer(int id)
+        {
+            return db.Orders.ToList().FindAll(o => o.CustomerId == id);
+        }
+
         Order IRepository<Order>.Add(Order entity)
         {
             if (entity.Date == null)
