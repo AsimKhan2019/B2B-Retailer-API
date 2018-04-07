@@ -9,8 +9,7 @@ using CustomerApi.Data;
 
 namespace CustomerApi.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Customer")]
+    [Route("api/Customers")]
     public class CustomerController : Controller
     {
 
