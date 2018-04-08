@@ -13,7 +13,8 @@ namespace OrderApi.Controllers
     public class OrdersController : Controller
     {
         private readonly IRepository<Order> repository;
-        private readonly string URL_PRODUCT_API = "http://localhost:5000/api/products/";
+        //private readonly string URL_PRODUCT_API = "http://localhost:5000/api/products/";
+        private readonly string URL_PRODUCT_API = "http://productapi/api/products/";
 
         public OrdersController(IRepository<Order> repos)
         {
