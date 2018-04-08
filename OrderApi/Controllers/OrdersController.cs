@@ -27,7 +27,7 @@ namespace OrderApi.Controllers
             return repository.GetAll();
         }
 
-        // GET api/products/5
+        // GET api/orders/5
         [HttpGet("{id}", Name = "GetOrder")]
         public IActionResult Get(int id)
         {
@@ -80,11 +80,11 @@ namespace OrderApi.Controllers
             return new NoContentResult();
         }
 
-        // GET: api/orders
-        [HttpGet("{id}", Name = "GetOrdersFromCustomer")]
-        public IEnumerable<Order> GetOrdersFromCustomer(int id)
+        // GET: api/orders/customer/ordersFromCustomer
+        [HttpHead("{CustomerId}", Name = "GetOrdersFromCustomer")]
+        public IEnumerable<Order> GetOrdersFromCustomer(int CustomerId)
         {
-            return repository.GetAllFromCustomer(id);
+            return repository.GetAllFromCustomer(CustomerId);
         }
 
 
