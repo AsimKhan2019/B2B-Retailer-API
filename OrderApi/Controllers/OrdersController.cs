@@ -14,9 +14,9 @@ namespace OrderApi.Controllers
     {
         private readonly IRepository<Order> repository;
         private readonly string URL_PRODUCT_API = "http://localhost:55556/api/products/";
-        //private readonly string URL_PRODUCT_API = "http://productapi/api/products/";
+       // private readonly string URL_PRODUCT_API = "http://productapi/api/products/";
         private readonly string URL_CUSTOMER_API = "http://localhost:3115/api/customers/";
-        //private readonly string URL_CUSTOMER_API = "http://customerapi/api/products/";
+       // private readonly string URL_CUSTOMER_API = "http://customerapi/api/customers/";
 
         public OrdersController(IRepository<Order> repos)
         {
@@ -72,6 +72,11 @@ namespace OrderApi.Controllers
             if (responseCustomer.Data == null)
             {
                 return NotFound();
+            }
+            // Check if customer has credit standing
+            if (!hasCreditStanding(order.CustomerId))
+            {
+                return Unauthorized();
             }
 
             // Check if there are enough items of that product.
@@ -161,6 +166,12 @@ namespace OrderApi.Controllers
         private DateTime calculateEstimatedDeliveryDate()
         {
             return DateTime.Today.AddDays(5d);
+        }
+
+        private bool hasCreditStanding(int customerId)
+        {
+            List<Order> orders = GetOrdersFromCustomer(customerId).ToList();
+            return !orders.Exists(o => o.Status == "requested");
         }
 
     }
