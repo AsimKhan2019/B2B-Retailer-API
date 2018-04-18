@@ -9,6 +9,7 @@ using RestSharp;
 
 namespace OrderApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/Orders")]
     public class OrdersController : Controller
     {
@@ -23,15 +24,30 @@ namespace OrderApi.Controllers
             repository = repos;
         }
 
+        /// <summary>
+        /// Returns all the orders stored in the system 
+        /// </summary>
+        /// <returns>All the orders in the system</returns>
+        /// <response code="200">If the request has been done successfully</response>   
         // GET: api/orders
+        [ProducesResponseType(200)]
         [HttpGet]
         public IEnumerable<Order> Get()
         {
             return repository.GetAll();
         }
 
-        // GET api/orders/5
+        /// <summary>
+        /// Returns a order by its identifier
+        /// </summary>
+        /// <param name="id"> The identifier of the fetched order</param>
+        /// <returns>A fetched order</returns>
+        /// <response code="404">If the order is not found</response>
+        /// <response code="200">If the request has been done successfully</response>   
+         // GET api/orders/5
         [HttpGet("{id}", Name = "GetOrder")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public IActionResult Get(int id)
         {
             var item = repository.Get(id);
@@ -42,8 +58,33 @@ namespace OrderApi.Controllers
             return new ObjectResult(item);
         }
 
+        /// <summary>
+        /// Creates a new order
+        /// </summary>
+        /// <remarks>
+        /// api/orders:
+        ///
+        ///     {
+        ///         "id": 1,
+        ///         "customerId": 1,
+        ///         "date": "2018-04-18T21:50:47.443Z",
+        ///         "status": "shipped",
+        ///         "shippingCharge": 0,
+        ///         "estimatedDeliveryDate": "2018-04-18T21:50:47.444Z",
+        ///         "productId": 1,
+        ///         "quantity": 2
+        ///     }
+        ///
+        /// 
+        /// </remarks>
+        /// <param name="order"></param>
+        /// <returns>A newly order</returns>
+        /// <response code="400">If all the parameters are not set correctly</response>
+        /// <response code="201">If the order was created successfully</response>
         // POST api/orders
         [HttpPost]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(201)]
         public IActionResult Post([FromBody]Order order)
         {
             if (order == null)
@@ -94,8 +135,16 @@ namespace OrderApi.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletes an existing order
+        /// </summary>
+        /// <param name="id"> The identifier of the order to delete</param>
+        /// <response code="404">If the order to delete does not exist</response>
+        /// <response code="200">If the request has been done successfully</response>   
         // DELETE api/orders/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult Delete(int id)
         {
             if (repository.Get(id) == null)
@@ -107,16 +156,54 @@ namespace OrderApi.Controllers
             return new NoContentResult();
         }
 
+
+        /// <summary>
+        /// Returns a order by its identifier
+        /// </summary>
+        /// <param name="customerId"> The identifier of the fetched Customer</param>
+        /// <returns>A fetched Customer</returns>
+        /// <response code="404">If the CustomerId is not found</response>
+        /// <response code="200">If the request has been done successfully</response>   
         // GET: api/orders/customer/ordersFromCustomer
         [HttpHead("{CustomerId}", Name = "GetOrdersFromCustomer")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public IEnumerable<Order> GetOrdersFromCustomer(int CustomerId)
         {
             return repository.GetAllFromCustomer(CustomerId);
         }
 
 
+        /// <summary>
+        /// Updates an existing order
+        /// </summary>
+        /// <param name="id"> The identifier of the order to update</param>
+        /// <remarks>
+        /// api/orders:
+        ///
+        ///     {
+        ///         "id": 1,
+        ///         "customerId": 1,
+        ///         "date": "2018-04-18T21:50:47.443Z",
+        ///         "status": "shipped",
+        ///         "shippingCharge": 0,
+        ///         "estimatedDeliveryDate": "2018-04-18T21:50:47.444Z",
+        ///         "productId": 1,
+        ///         "quantity": 2
+        ///     }
+        ///
+        /// 
+        /// </remarks>
+        /// <param name="order"></param>
+        /// <returns>A new order</returns>
+        /// <response code="400">If all the parameters are not set correctly</response>
+        /// <response code="404">If the order to update does not exist</response>
+        /// <response code="200">If the request has been done successfully</response>   
         // PUT api/orders/5
         [HttpPut("{id}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult Put(int id, [FromBody]Order order)
         {
             if (order == null || order.Id != id)
